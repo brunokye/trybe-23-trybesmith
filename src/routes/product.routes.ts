@@ -5,10 +5,11 @@ const router = Router();
 
 const productController = new ProductController();
 
-const { create } = productController;
+const { getAll, create } = productController;
 
 router
   .route('/products')
+  .get(getAll)
   .post(create);
 
 export default router;
