@@ -1,6 +1,6 @@
 import connection from '../models/connection';
 import UserModel from '../models/user.model';
-import { User } from '../interfaces';
+import { User, UserCredentials } from '../interfaces';
 
 class UserService {
   model: UserModel;
@@ -11,6 +11,11 @@ class UserService {
 
   create(user: User): Promise<User> {
     return this.model.create(user);
+  }
+
+  login(userCredentials: UserCredentials) {
+    const { username, password } = userCredentials;
+    return this.model.login(username, password);
   }
 }
 
