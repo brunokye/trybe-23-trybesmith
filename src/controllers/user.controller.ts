@@ -4,17 +4,17 @@ import UserService from '../services/user.service';
 import createToken from '../utils/auth';
 
 class UserController {
-  userService: UserService;
+  service: UserService;
   
   constructor(userService = new UserService()) {
-    this.userService = userService;
+    this.service = userService;
     this.create = this.create.bind(this);
   }
 
   async create(req: Request, res: Response): Promise<void> {
     const user = req.body;
 
-    await this.userService.create(user);
+    await this.service.create(user);
 
     const token = await createToken(req.body.username);
 
